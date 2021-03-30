@@ -1,14 +1,18 @@
 # Summary
 
- ubuntu base docker container.
+ ubuntu base docker container with japanese.
 
 # Description
 
-Include ubuntu base image.
+Include ubuntu base image. with japanese.
 
 # Changelog
 
-## build-version 0
+## build-version 1 20.04 latest
+
+    OS Upgrade / ubuntu:20.04
+
+## build-version 0 18.04
 
     First Commit / ubuntu:18.04
 
@@ -26,7 +30,7 @@ Include ubuntu base image.
 
 ### --volume
 
-    None
+    /.docker
 
 ## Examples
 

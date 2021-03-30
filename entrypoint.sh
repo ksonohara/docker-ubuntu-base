@@ -4,12 +4,19 @@ if [ $DOCKER_DEBUG = 1 ]; then
   ls -lrt / | grep docker
   ls -lrt /.docker
 fi
-source /.docker/config
 
-source /.docker/init.sh
+if [ -f /.docker/config ]; then
+  source /.docker/config
+fi
 
-[ -f /.docker/setup ] || {
+if [ -f /.docker/init.sh ]; then
+  source /.docker/init.sh
+fi
+
+if [ -f /.docker/setup.sh ]; then
   source /.docker/setup.sh
-}
+fi
 
-source /.docker/service.sh
+if [ -f /.docker/service.sh ]; then
+  source /.docker/service.sh
+fi
