@@ -12,9 +12,28 @@ RUN mkdir /.docker
 
 ENV DOCKER_DEBUG 0
 
+RUN echo 'source /etc/profile.d/*.sh' >> ~/.bashrc
+
+RUN apt update -y && apt upgrade -y && apt update -y
+
+RUN apt install -y locales language-pack-ja-base language-pack-ja
+RUN locale-gen ja_JP.UTF-8
+# && echo "export LANG=ja_JP.UTF-8" >> /etc/profile.d/lang.sh
+
+RUN apt install -y tzdata
+#RUN echo "export TZ=Asia/Tokyo" >> /etc/profile.d/timezone.sh
+
+ENV TZ Asia/Tokyo
+
+ENV LANG ja_JP.UTF-8
+ENV LANGUAGE ja_JP:ja
+ENV LC_ALL ja_JP.UTF-8
+
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
 VOLUME ["/.docker"]
 
 ENTRYPOINT ["/entrypoint.sh"]
+
+RUN apt autoremove -y && apt clean && rm -rf /var/lib/apt/lists/*

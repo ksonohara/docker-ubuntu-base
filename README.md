@@ -23,6 +23,10 @@ Include ubuntu base image. with japanese.
 ### --env
 
     DOCKER_DEBUG 0
+    TZ Asia/Tokyo
+    LANG ja_JP.UTF-8
+    LANGUAGE ja_JP:ja
+    LC_ALL ja_JP.UTF-8
 
 ### --port
 
